@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Templates</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        padding: 20px;
+      }
+      .search-box input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .card h2 {
+        font-size: 1.5em;
+        margin: 10px 0;
+      }
+      .card p {
+        color: #666;
+      }
+      .card button {
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .card button:hover {
+        background: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Business Templates</h1>
+      <div class="search-box">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search templates..."
+          onkeyup="filterTemplates()"
+        />
+      </div>
+      <div class="grid" id="template-container">
+        <!-- Templates will be loaded here dynamically -->
+      </div>
+    </div>
+    <script>
+      const templates = [
+        {
+          id: 1,
+          title: 'Marketing Plan',
+          category: 'Marketing',
+          description: 'A complete marketing strategy template.',
+          image: 'https://via.placeholder.com/300',
+        },
+        {
+          id: 2,
+          title: 'Business Proposal',
+          category: 'Business',
+          description: 'Professional business proposal template.',
+          image: 'https://via.placeholder.com/300',
+        },
+        {
+          id: 3,
+          title: 'Invoice Template',
+          category: 'Finance',
+          description: 'Simple and clean invoice template.',
+          image: 'https://via.placeholder.com/300',
+        },
+      ];
+
+      function loadTemplates() {
+        const container = document.getElementById('template-container');
+        container.innerHTML = '';
+        templates.forEach((template) => {
+          const card = document.createElement('div');
+          card.classList.add('card');
+          card.innerHTML = `
+                    <img src="${template.image}" alt="${template.title}">
+                    <h2>${template.title}</h2>
+                    <p>${template.description}</p>
+                    <button>Download</button>
+                `;
+          container.appendChild(card);
+        });
+      }
+
+      function filterTemplates() {
+        const searchValue = document
+          .getElementById('search')
+          .value.toLowerCase();
+        const filteredTemplates = templates.filter((template) =>
+          template.title.toLowerCase().includes(searchValue)
+        );
+        const container = document.getElementById('template-container');
+        container.innerHTML = '';
+        filteredTemplates.forEach((template) => {
+          const card = document.createElement('div');
+          card.classList.add('card');
+          card.innerHTML = `
+                    <img src="${template.image}" alt="${template.title}">
+                    <h2>${template.title}</h2>
+                    <p>${template.description}</p>
+                    <button>Download</button>
+                `;
+          container.appendChild(card);
+        });
+      }
+
+      window.onload = loadTemplates;
+    </script>
+  </body>
+</html>

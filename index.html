@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Life Solver</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!--
+      Need a visual blank slate?
+      Remove all code in `styles.css`!
+    -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Life Solver</h1>
+      <div class="search-box">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search notes..."
+          onkeyup="searchNotes()"
+        />
+        <div class="grid" id="notes-container">
+          <!-- Templates will be loaded here dynamically -->
+        </div>
+      </div>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>
