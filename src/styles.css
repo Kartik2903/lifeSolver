@@ -133,12 +133,12 @@ main h2{
   background: rgb(255, 0, 0);
   color: rgb(255, 255, 255);
 }
-
+/* 
 .arrow{
   width: 250px;
   position: absolute;
   right: 190px;
   top:350px;
   rotate:calc(10deg);
-  
-}
+
+} */
